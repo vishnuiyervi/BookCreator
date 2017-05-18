@@ -8,7 +8,7 @@ import java.io.PrintWriter;
  */
 public class Runner {
     public static void main(String [] args) throws Exception {
-        if (args.length != 4) {
+        if (args.length != 3) {
             System.out.println("ERROR: Invalid document type. Please specify if book or note " +
                     "is to be compiled.");
             System.exit(0);
@@ -17,7 +17,7 @@ public class Runner {
         if (args[0].equals("book")) {
             creator = new BookCreator(args[0]);
         } else if (args[0].equals("note")) {
-            creator = new NoteCreator(args[1], args[2]);
+            creator = new NoteCreator(args[1], "template");
         } else {
             System.out.println("ERROR: Invalid document type. Please specify if book or note " +
                     "is to be compiled.");
@@ -25,7 +25,7 @@ public class Runner {
             System.exit(0);
         }
         try {
-            creator.compile(args[3]);
+            creator.compile(args[2]);
             System.out.println("Query executed successfully.");
         } catch (RuntimeException e) {
             System.out.println("ERROR: " + e.getMessage());

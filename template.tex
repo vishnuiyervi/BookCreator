@@ -1,0 +1,162 @@
+%%%%%%%%%%%%%%% DEFINE FORMATS %%%%%%%%%%%%%%%%%%%
+%%% DOCUMENT FORMAT %%%
+\usepackage[margin=0.7in]{geometry}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{enumerate, blindtext, graphicx, tabularx, hyperref, framed, transparent, ulem, tgheros, lmodern,verbatim}
+\definecolor{primary}{HTML}{3589EA}
+\definecolor{secondary}{HTML}{2579CF}
+\definecolor{shadecolor}{HTML}{3589EA}
+\renewcommand{\familydefault}{qhv}
+\setlength{\parindent}{0pt}
+
+%%% MATH %%%
+\usepackage{amsmath, amsthm, amsfonts, amssymb} % for mathematical formulae and theorems
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{lma}{Lemma}[thm]
+\newtheorem{prp}[thm]{Proposition}
+
+%%%%% CONTENT ENVIRONMENTS %%%%%
+\newcommand{\linerule}{\noindent\makebox[\linewidth]{\rule{\textwidth}{1pt}}}
+
+\newcommand{\makeheading}[2]
+	{
+		\noindent
+		\uuline{\textsc{\LARGE Note #1: #2}}
+	}
+
+%%%%% THEOREM ENVIRONMENTS %%%%%
+
+%%% HELPER ENVIRONMENT FOR THEOREMS
+\newenvironment{thmtext}[1]
+	{\color{black}
+		\transparent{1.0}
+			\color{black}
+			\scshape
+			\begin{thm}[#1]
+			\normalfont
+	}
+	{
+		\end{thm}
+			
+	}
+	
+%%% MAIN THEOREM ENVIRONMENT
+\newenvironment{theorem}[1]
+	{\color{primary}
+		\transparent{0.3}
+		\begin{shaded}
+		\begin{leftbar}
+			\transparent{1.0}
+		\begin{thmtext}{#1}
+	}
+	{
+		\end{thmtext}
+		\end{leftbar}
+		\end{shaded}
+		\transparent{1.0}
+	}
+
+%%% HELPER ENVIRONMENT FOR DEFINITIONS
+\newenvironment{dfntext}[1]
+{\color{black}
+	
+	\color{black}
+	\begin{dfn}[#1]
+	}
+	{
+	\end{dfn}
+	
+}
+
+%%% MAIN DEFINITION ENVIRONMENT
+\newenvironment{definition}[1]
+	{\color{primary}
+		\transparent{0.3}
+		\begin{shaded}
+			\begin{leftbar}
+				\transparent{1.0}
+				\renewcommand{\normalfont}{\scshape}
+				\begin{dfntext}{#1}
+	}
+	{
+				\end{dfntext}
+			\end{leftbar}
+		\end{shaded}
+		\transparent{1.0}
+	}
+
+%%% HELPER ENVIRONMENT FOR LEMMAS
+\newenvironment{lmatext}
+{\color{black}
+	
+	\color{black}
+	\begin{lma}
+	}
+	{
+	\end{lma}
+	
+}
+
+%%% MAIN LEMMA ENVIRONMENT
+\newenvironment{lemma}
+	{\color{primary}
+		\begin{leftbar}
+			\renewcommand{\normalfont}{\scshape}
+			\begin{lmatext}
+			}
+			{
+			\end{lmatext}
+		\end{leftbar}
+	}
+	
+%%% HELPER ENVIRONMENT FOR PROPOSITIONS
+\newenvironment{prptext}
+{\color{black}
+	
+	\color{black}
+	\begin{prp}
+	}
+	{
+	\end{prp}
+	
+}
+
+%%% MAIN PROPOSITION ENVIRONMENT
+\newenvironment{proposition}
+{\color{primary}
+	\begin{leftbar}
+		\renewcommand{\normalfont}{\scshape}
+		\begin{prptext}
+			}
+		{
+		\end{prptext}
+	\end{leftbar}
+}
+
+%%% HELPER ENVIRONMENT FOR REMARK
+\newenvironment{rmktext}
+{\color{black}
+	
+	\color{black}
+	}
+	{
+	\color{primary}
+}
+
+%%% ENVIRONMENT FOR REMARKS AND OTHER SMALL STATEMENTS
+\newenvironment{remark}
+{\color{primary}
+	\begin{leftbar}
+		\begin{rmktext}
+		}
+		{
+		\end{rmktext}
+	\end{leftbar}
+}
+
+\newcommand{\sect}[1]{{\color{secondary}\section{#1}}}
+
+\newcommand{\highlight}[1]{\textsc{\textbf{\color{secondary}#1:}}}
+%%%%%%%%%%%%%%% END DEFINITIONS %%%%%%%%%%%%%%%%%%%
