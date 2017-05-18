@@ -10,7 +10,7 @@ Format
 - adding a subsection: <code><subsection name ="name"></subsection></code>
 - adding a definition: <code><def name="name"></def></code>
 - adding a theorem: <code><thm name ="name"></thm></code>
-- adding a lemma: <code><lemma name = "name"></lemma></code>
+- adding a lemma: <code>\<lemma name = "name">\</lemma></code>
 - adding a proposition: <code><prp></prp></code>
 - adding a remark: <code><rmk></rmk></code>
 - highlighting text: <code><em></em></code>
