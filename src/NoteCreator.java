@@ -1,8 +1,5 @@
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 import java.io.*;
 import java.util.Scanner;
 
@@ -31,7 +28,7 @@ public class NoteCreator implements Creator {
         initialize(writer, template);
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
-        parser.parse(file, new NoteHandler());
+        parser.parse(file, new NoteHandler(writer));
         terminate(writer);
     }
 
