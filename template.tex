@@ -1,8 +1,9 @@
 %%%%%%%%%%%%%%% DEFINE FORMATS %%%%%%%%%%%%%%%%%%%
 %%% DOCUMENT FORMAT %%%
+\documentclass[12pt]{article}
 \usepackage[margin=0.7in]{geometry}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage{enumerate, blindtext, graphicx, tabularx, hyperref, framed, transparent, ulem, tgheros, lmodern,verbatim}
+\usepackage{enumerate, blindtext, graphicx, tabularx, hyperref, framed, transparent, ulem, tgheros, lmodern,verbatim, listings}
 \definecolor{primary}{HTML}{3589EA}
 \definecolor{secondary}{HTML}{2579CF}
 \definecolor{shadecolor}{HTML}{3589EA}
@@ -159,4 +160,33 @@
 \newcommand{\sect}[1]{{\color{secondary}\section{#1}}}
 
 \newcommand{\highlight}[1]{\textsc{\textbf{\color{secondary}#1:}}}
+
+%%%%% CODE ENVIRONMENT DEFINITION %%%%%
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codenumber}{HTML}{FF8D42}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{HTML}{DDEEFF}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\color{codenumber},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
 %%%%%%%%%%%%%%% END DEFINITIONS %%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\lstinputlisting[language=Java]{test.java}
+\end{document}

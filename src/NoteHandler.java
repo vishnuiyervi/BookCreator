@@ -71,6 +71,11 @@ public class NoteHandler extends DefaultHandler {
         } else if (qname.equalsIgnoreCase("proof")) {
             bproof = true;
             writer.printf("\\begin{proof}\n");
+        } else if (qname.equalsIgnoreCase("code")) {
+            String lang = attributes.getValue("lang");
+            lang = lang.substring(0,1).toUpperCase() + lang.substring(1).toLowerCase();
+            String fileName =attributes.getValue("href");
+            writer.printf("\\lstlisting[language=%s]{%s}\n", lang, fileName);
         }
     }
 
