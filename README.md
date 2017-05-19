@@ -23,3 +23,4 @@ Format
 - adding math in-line: <code>\<math></math></code>
 - adding display math: <code>\<dmath></dmath></code>
 - adding a proof: <code>\<proof>\</proof></code>
+- embedding code: <code>\<code lang = "language" href="path-to-file"></code>
