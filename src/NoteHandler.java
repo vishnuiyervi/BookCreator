@@ -71,11 +71,18 @@ public class NoteHandler extends DefaultHandler {
         } else if (qname.equalsIgnoreCase("proof")) {
             bproof = true;
             writer.printf("\\begin{proof}\n");
-        } else if (qname.equalsIgnoreCase("code")) {
+        } else if (qname.equalsIgnoreCase("em")) {
+            writer.printf("\\emph{")
+        } else if (qname.equalsIgnoreCase("b")) {
+            writer.printf("\\textbf{")
+        }
+        else if (qname.equalsIgnoreCase("code")) {
             String lang = attributes.getValue("lang");
             lang = lang.substring(0,1).toUpperCase() + lang.substring(1).toLowerCase();
             String fileName =attributes.getValue("href");
             writer.printf("\\lstlisting[language=%s]{%s}\n", lang, fileName);
+        } else {
+            throw new RuntimeError("Unkown start tag: " + qname);
         }
     }
 
@@ -108,15 +115,20 @@ public class NoteHandler extends DefaultHandler {
             writer.printf("}");
         } else if (qname.equalsIgnoreCase("math")) {
             bmath = false;
-            writer.printf(" $");
+            writer.printf(" $ ");
         } else if (qname.equalsIgnoreCase("dmath")) {
             bdmath = false;
             writer.printf("$$");
         } else if (qname.equalsIgnoreCase("proof")) {
             bproof = false;
             writer.printf("\\end{proof}\n");
+        } else if (qname.equalsIgnoreCase("em")) {
+            writer.printf("} ")
+        } else if (qname.equalsIgnoreCase("b")) {
+            writer.printf("} ")
+        } else {
+            throw new RuntimeError("Unkown end tag: " + qname);
         }
-    }
 
     @Override
     public void characters(char [] ch, int start, int length) {

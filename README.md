@@ -1,4 +1,4 @@
-Book/Note Generator 1.1.0
+Book/Note Generator 1.1.1
 =========================
 
 Project written by Vishnu Iyer to create XML format for open course note creation. Currently offers support for the following operations:
@@ -6,7 +6,7 @@ Project written by Vishnu Iyer to create XML format for open course note creatio
 - in-line and line-by-line formulae
 - propositions, remarks, and lemmas
 - proofs
-- highlighting text
+- bolding, emphasizing, and highlighting text
 - code embeddings
 
 Format
@@ -20,6 +20,8 @@ Format
 - adding a proposition: <code>\<prp>\</prp></code>
 - adding a remark: <code>\<rmk>\</rmk></code>
 - highlighting text: <code>\<highlight>\</highlight></code>
+- bolding text: <code>\<b>\</b></code>
+- emphasizing text: <code>\<em>\</em></code>
 - adding math in-line: <code>\<math></math></code>
 - adding display math: <code>\<dmath></dmath></code>
 - adding a proof: <code>\<proof>\</proof></code>
