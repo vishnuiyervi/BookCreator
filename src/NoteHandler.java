@@ -20,6 +20,7 @@ public class NoteHandler extends DefaultHandler {
     private boolean bmath = false;
     private boolean bdmath = false;
     private boolean bproof = false;
+    private boolean bulist = false;
     private PrintWriter writer;
 
     public NoteHandler(PrintWriter writer) {
@@ -34,6 +35,11 @@ public class NoteHandler extends DefaultHandler {
             String name = attributes.getValue("name");
             String number = attributes.getValue("number");
             writer.printf("\\makeheading{%s}{%s}\\\n", number, name);
+        } else if (qname.equalsIgnoreCase("ulist")) {
+            bulist = true;
+            writer.printf("\\begin{itemize}\n");
+        } else if (qname.equals("br")) {
+            writer.printf(" \\ ");
         } else if (qname.equalsIgnoreCase("section")) {
             bsection = true;
             String name = attributes.getValue("name");
@@ -73,7 +79,13 @@ public class NoteHandler extends DefaultHandler {
             writer.printf("\\begin{proof}\n");
         } else if (qname.equalsIgnoreCase("em")) {
             writer.printf("\\emph{")
-        } else if (qname.equalsIgnoreCase("b")) {
+        } else if (qname.equalsIgnoreCase("item")) {
+            if (!bulist) {
+                throw new RuntimeError("List item outside environment");
+            }
+            writer.printf("\\item ");
+        } 
+        else if (qname.equalsIgnoreCase("b")) {
             writer.printf("\\textbf{")
         }
         else if (qname.equalsIgnoreCase("code")) {
@@ -110,6 +122,9 @@ public class NoteHandler extends DefaultHandler {
         } else if (qname.equalsIgnoreCase("rmk")) {
             brmk = false;
             writer.printf("\\end{remark}\n");
+        } else if (qname.equalsIgnoreCase("ulist")) {
+            bulist = false;
+            writer.printf("\\end{itemize}\n");
         } else if (qname.equalsIgnoreCase("highlight")) {
             bhighlight = false;
             writer.printf("}");
@@ -126,6 +141,8 @@ public class NoteHandler extends DefaultHandler {
             writer.printf("} ")
         } else if (qname.equalsIgnoreCase("b")) {
             writer.printf("} ")
+        } else if (qname.equalsIgnoreCase("item")) {
+            writer.println();
         } else {
             throw new RuntimeError("Unkown end tag: " + qname);
         }
