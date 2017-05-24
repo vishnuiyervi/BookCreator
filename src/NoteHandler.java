@@ -33,7 +33,7 @@ public class NoteHandler extends DefaultHandler {
             bnote = true;
             String name = attributes.getValue("name");
             String number = attributes.getValue("number");
-            writer.printf("\\makeheading{%s}{%s}\n", number, name);
+            writer.printf("\\makeheading{%s}{%s}\\\n", number, name);
         } else if (qname.equalsIgnoreCase("section")) {
             bsection = true;
             String name = attributes.getValue("name");
